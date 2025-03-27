@@ -1,9 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.*;
-import java.util.*;
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.io.*;
 
 public class ShowFlowLayoutNew extends JFrame {
 
