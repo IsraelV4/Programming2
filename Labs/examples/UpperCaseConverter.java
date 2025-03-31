@@ -10,5 +10,6 @@ public class UpperCaseConverter extends JFrame {
     public static void main(String[] args) {
         UpperCaseConverter u = new UpperCaseConverter();
         u.setVisible(true);
+
     }
 }
