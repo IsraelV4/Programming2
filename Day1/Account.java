@@ -1,3 +1,4 @@
+package Day1;
 public class Account {
     public double Capital, Rate;
     public int Term;
