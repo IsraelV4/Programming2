@@ -10,10 +10,17 @@ import javax.swing.*;
 public class Political extends JFrame implements ActionListener {
 
     /*
+    A
 1. Request some information from voter --> check
+
+    B
 2. Request what party a voter wish to vote for in presidential election
 3. Request for the party in Senate, House and Governorship elections
+
+    AB
 4. Disallow double voting
+
+    BC
 5. Display number of people voted, democratic votes, republican vote and others
 6. Display the political party that wins in each election
      */
