@@ -45,6 +45,7 @@ public class Vote extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
         Vote frame = new Vote("Political Project part 2");
+        frame.setVisible(true);
     }
 
     @Override

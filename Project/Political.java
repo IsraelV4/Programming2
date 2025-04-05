@@ -57,11 +57,11 @@ public class Political extends JFrame implements ActionListener {
     
     public static void main(String[] args) {
         Political frame = new Political("Political Project");
+        frame.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if (e.getSource()==button) {
             String[] tmp = new String[info.length];
             for (int i=0; i<tmp.length; i++) {
