@@ -1,3 +1,4 @@
+package Labs.examples;
 import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.Container;

@@ -1,3 +1,4 @@
+package Day1;
 //     public static void main(String[] args) {
 //         Account Josh = new Account();
 //         Account Bob = new Account();

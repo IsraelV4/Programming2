@@ -1,3 +1,4 @@
+package Labs.examples;
 import javax.swing.*;
 public class UpperCaseConverter extends JFrame {
     public UpperCaseConverter() {
