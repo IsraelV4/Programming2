@@ -1,4 +1,4 @@
-package Labs.Lab05AbstractClass;
+package Labs.lab05AbstractClass;
 
 public class Hawk extends Bird {
 

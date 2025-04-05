@@ -1,4 +1,4 @@
-package Labs.Lab06ErrorHandling;
+package Labs.lab06ErrorHandling;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package Labs.Lab06ErrorHandling;
+package Labs.lab06ErrorHandling;
 /* Program name: Paper, Scissor and Rock Version 0.1
 Initially created by Dr. Wenjia Li
 Finished by _(Your Name)__ 

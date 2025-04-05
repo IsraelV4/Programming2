@@ -1,4 +1,4 @@
-package Labs.Lab05AbstractClass;
+package Labs.lab05AbstractClass;
 
 public class A extends Marks {
     public A(double a, double b, double c, String n) {
