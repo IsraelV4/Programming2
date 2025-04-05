@@ -47,6 +47,7 @@ public class Loan extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         Loan l = new Loan();
+        l.setVisible(true);
     }
 /*
  * M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1], where M is the monthly payment, 
