@@ -2,22 +2,20 @@ package Project;
 
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Political extends JFrame implements ActionListener {
 
     /*
-    A
-1. Request some information from voter --> check
+    A - Check
+1. Request some information from voter
 
-    B
+    B - Check
 2. Request what party a voter wish to vote for in presidential election
 3. Request for the party in Senate, House and Governorship elections
 
-    AB
+    AB - Check
 4. Disallow double voting
 
     BC
@@ -31,6 +29,7 @@ public class Political extends JFrame implements ActionListener {
     JButton button = new JButton("Send");
     String[] data = new String[] {"First name", "Middle name (Optional)", "Last name", "SSN", "phone number", "address line 1", "address line 2 (Optional)", "street address"," zip code", "city", "state"};
     JLabel error = new JLabel("Hello");
+    Vote v = new Vote("Voting Page");
 
     public Political(String name) {
         super(name);

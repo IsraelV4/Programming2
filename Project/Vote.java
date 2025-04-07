@@ -3,6 +3,7 @@ package Project;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class Vote extends JFrame implements ActionListener{
 
@@ -13,13 +14,14 @@ public class Vote extends JFrame implements ActionListener{
 
     JPanel panel = new JPanel();
     JButton button = new JButton("Confirm");
-    String[] choices = { "---", "Republican: Jerry Irwin", "Democratic: Israel John", "Conservative: Angilina Amelia", "Green: Samantha Scones", "Independent: ChatGPT" };
+    String[] choices = { "---", "(0) Republican: Jerry Irwin", "(1) Democratic: Israel John", "(2) Conservative: Angilina Amelia", "(3) Green: Samantha Scones", "(4) Independent: ChatGPT" };
     int cycle = 0;
     JLabel label = new JLabel("Select a Presidential Candidate and press Confirm to vote for them");
     JComboBox<String> cb = new JComboBox<String>(choices);
     String selected = "---";
     JLabel er = new JLabel();
     JButton results = new JButton("See Results");
+    Result r = new Result("Result Page");
 
 
 
@@ -63,7 +65,7 @@ public class Vote extends JFrame implements ActionListener{
         /*3. Request for the party in Senate, House and Governorship elections*/
         if (e.getSource()==button && !selected.equals("---")) {
             if (cycle==0) {
-                choices = new String[] { "---", "Republican: Jive Jay", "Democratic: Alethea Velazquez", "Conservative: Blue Bird", "Green: Bushra Ray", "Independent: Alexander the Great" };
+                choices = new String[] { "---", "(0) Republican: Jive Jay", "(1) Democratic: Alethea Velazquez", "(2) Conservative: Blue Bird", "(3) Green: Bushra Ray", "(4) Independent: Alexander the Great" };
                 cb.removeAllItems();
                 for (int i=0; i<choices.length; i++) {
                     cb.addItem(choices[i]);
@@ -72,7 +74,7 @@ public class Vote extends JFrame implements ActionListener{
                 label.setText("Select a Senate Candidate and press Confirm to vote for them");
             }
             else if (cycle==1) {
-                choices = new String[] { "---", "Republican: Sam Syer", "Democratic: Alan Turner", "Conservative: Carry Carlson", "Green: Anigla Bell", "Independent: Bond, James Bond" };
+                choices = new String[] { "---", "(0) Republican: Sam Syer", "(1) Democratic: Alan Turner", "(2) Conservative: Carry Carlson", "(3) Green: Anigla Bell", "(4) Independent: Bond, James Bond" };
                 cb.removeAllItems();
                 for (int i=0; i<choices.length; i++) {
                     cb.addItem(choices[i]);
@@ -81,7 +83,7 @@ public class Vote extends JFrame implements ActionListener{
                 label.setText("Select a House Candidate you'd like to vote for and press Confirm to vote for them");
             }
             else if (cycle==2) {
-                choices = new String[] { "---", "Republican: Berry Vad", "Democratic: Veary Gud", "Conservative: Allsoh tareibil", "Green: Raven Yeng", "Independent: Bruce Wayne" };
+                choices = new String[] { "---", "(0) Republican: Berry Vad", "(1) Democratic: Veary Gud", "(2) Conservative: Allsoh tareibil", "(3) Green: Raven Yeng", "(4) Independent: Bruce Wayne" };
                 cb.removeAllItems();
                 for (int i=0; i<choices.length; i++) {
                     cb.addItem(choices[i]);
