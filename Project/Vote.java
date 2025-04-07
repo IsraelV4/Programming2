@@ -18,6 +18,8 @@ public class Vote extends JFrame implements ActionListener{
     JLabel label = new JLabel("Select a Presidential Candidate and press Confirm to vote for them");
     JComboBox<String> cb = new JComboBox<String>(choices);
     String selected = "---";
+    JLabel er = new JLabel();
+    JButton results = new JButton("See Results");
 
 
 
@@ -37,10 +39,17 @@ public class Vote extends JFrame implements ActionListener{
 
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(button);
-        add(panel);
-        setVisible(true);
+        
+        
         button.addActionListener(this);
         cb.addActionListener(this);
+
+        er.setAlignmentX(Component.BOTTOM_ALIGNMENT);
+        panel.add(er);
+
+
+        add(panel);
+        setVisible(true);
     }
 
     public static void main(String[] args) {
@@ -50,6 +59,8 @@ public class Vote extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        er.setText("");
+        /*3. Request for the party in Senate, House and Governorship elections*/
         if (e.getSource()==button && !selected.equals("---")) {
             if (cycle==0) {
                 choices = new String[] { "---", "Republican: Jive Jay", "Democratic: Alethea Velazquez", "Conservative: Blue Bird", "Green: Bushra Ray", "Independent: Alexander the Great" };
@@ -60,12 +71,53 @@ public class Vote extends JFrame implements ActionListener{
                 cycle++;
                 label.setText("Select a Senate Candidate and press Confirm to vote for them");
             }
+            else if (cycle==1) {
+                choices = new String[] { "---", "Republican: Sam Syer", "Democratic: Alan Turner", "Conservative: Carry Carlson", "Green: Anigla Bell", "Independent: Bond, James Bond" };
+                cb.removeAllItems();
+                for (int i=0; i<choices.length; i++) {
+                    cb.addItem(choices[i]);
+                }
+                cycle++;
+                label.setText("Select a House Candidate you'd like to vote for and press Confirm to vote for them");
+            }
+            else if (cycle==2) {
+                choices = new String[] { "---", "Republican: Berry Vad", "Democratic: Veary Gud", "Conservative: Allsoh tareibil", "Green: Raven Yeng", "Independent: Bruce Wayne" };
+                cb.removeAllItems();
+                for (int i=0; i<choices.length; i++) {
+                    cb.addItem(choices[i]);
+                }
+                cycle++;
+                label.setText("<html> Select a Governship Candidate you'd like to vote for and press Confirm to vote for them </html>");
+            }
+            else {
+                label.setText("<html>Excellent, your vote and information has been successfully recorded. Thank you for contributing!<br><br><br> If you'd like to see the results, please press the 'See Results' button</html>");
+                panel.remove(cb);
+                panel.remove(button);
+                panel.add(results);
+                panel.revalidate();
+                panel.repaint();
+            }
         }
         else if (e.getSource()==cb && cb.getSelectedItem()!=null) {
             selected = (String)cb.getSelectedItem();
         }
-        else {
+        else if (e.getSource()==results) {
 
+
+            /*
+             * 
+             * 
+             * RUN Result JFrame here
+             * 
+             * 
+             * 
+             */
+
+
+
+        }
+        else {
+            er.setText("Invalid choice, please try again");
         }
     }
 }
