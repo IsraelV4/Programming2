@@ -3,6 +3,8 @@ package Project;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class Political extends JFrame implements ActionListener {
@@ -28,7 +30,10 @@ public class Political extends JFrame implements ActionListener {
 
     JButton button = new JButton("Send");
     String[] data = new String[] {"First name", "Middle name (Optional)", "Last name", "SSN", "phone number", "address line 1", "address line 2 (Optional)", "street address"," zip code", "city", "state"};
-    JLabel error = new JLabel("Hello");
+    JLabel error = new JLabel("");
+    int action = 0;
+    String[] tmp;
+    ArrayList<String[]> voters = new ArrayList<>();
 
     public Political(String name) {
         super(name);
@@ -49,7 +54,28 @@ public class Political extends JFrame implements ActionListener {
         button.addActionListener(this);
         add(button);
         add(error);
-        setVisible(true);
+    }
+
+    public Political(String name, ArrayList<String[]> v) {
+        super(name);
+        voters = v;
+        setLocation(0,0);
+        setSize(500,500);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+
+        setLayout(new GridLayout(info.length+2, 3, 5, 5));
+        add(new JLabel("Please enter"));
+        add(new JLabel("your information")); add(new JLabel("                  here"));
+        for (int i=0; i<info.length; i++) {
+            info[i] = new JTextField();
+            add(new JLabel( " "+data[i]));
+            add(new JLabel());
+            add(info[i]);
+        }
+        button.addActionListener(this);
+        add(button);
+        add(error);
     }
 
     
@@ -61,7 +87,7 @@ public class Political extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==button) {
-            String[] tmp = new String[info.length];
+            tmp = new String[info.length];
             for (int i=0; i<tmp.length; i++) {
                 tmp[i] = info[i].getText();
                 if (i!=1 && i!=6 && tmp[i].equals("")) {
@@ -69,8 +95,13 @@ public class Political extends JFrame implements ActionListener {
                     return;
                 }
             }
+            if (!Result.canVote(tmp, voters)) {
+                error.setText("<html>Invalid information, already voted");
+                return;
+            }
             error.setText("");
             setVisible(false);
+            action = 1;
         }
         else {
             throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");

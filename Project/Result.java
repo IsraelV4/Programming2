@@ -13,12 +13,13 @@ public class Result extends JFrame implements ActionListener {
     JLabel[][] text = new JLabel[votes.length+1][Parties.length+2];
     String[] Category = new String[] {"Presidency", "Senate", "House", "Governance"};
     JButton button = new JButton("<html>New Vote</html>");
+    int action = 0;
 
 
     public Result(String name) {
         super(name);
         setLocation(0,0);
-        setSize(500,500);
+        setSize(1000,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridLayout(text.length+1, text[0].length, 5, 5));
 
@@ -52,28 +53,41 @@ public class Result extends JFrame implements ActionListener {
         voters.add(Arrays.copyOf(arr, arr.length));
     }
 
-    public boolean canVote(String[] arr) {
+    public static boolean canVote(String[] arr, ArrayList<String[]> voters) {
         for (int i=0; i<voters.size(); i++) {
             if (Arrays.equals(voters.get(i),arr)) {
                 return false;
             }
         }
-        recieveVoter(arr);
         return true;
     }
 
     public void recieveVote(int i, String vote) {
         votes[i][vote.charAt(1)-'0']++;
         votes[i][5]++;
-        if (i==votes.length) {
-            updateVote();
-        }
     }
 
     public void updateVote() {
         for (int i=0; i<votes[0].length; i++) {
             for (int j=0; j<votes.length; j++) {
-                text[j+1][i+1] = new JLabel(""+votes[j][i]);
+                text[j+1][i+1].setText(""+votes[j][i]);
+                text[j+1][i+1].setForeground(Color.BLACK);
+            }
+        }
+        winner();
+    }
+
+    public void winner() {
+        for (int i=0; i<votes.length; i++) {
+            for (int j=0; j<votes[i].length-1; j++) {
+                if ((double)votes[i][j]/(double)(votes[i][votes[i].length-1])>.5) {
+                    text[i+1][text[0].length-1].setText(Parties[j]);
+                    text[i+1][j+1].setForeground(Color.GREEN);
+                    j+=votes[i].length;
+                }
+                else {
+                    text[i+1][text[0].length-1].setText("N/A");
+                }
             }
         }
     }
@@ -81,15 +95,13 @@ public class Result extends JFrame implements ActionListener {
     public static void main(String[] args) {
         Result frame = new Result("Results Page");
         frame.setVisible(true);
-
-
-        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==button) {
-
+            action = 1;
+            setVisible(false);
         }
     }
 

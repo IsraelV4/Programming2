@@ -21,6 +21,9 @@ public class Vote extends JFrame implements ActionListener{
     String selected = "---";
     JLabel er = new JLabel();
     JButton results = new JButton("See Results");
+    int action = 0;
+
+    String prev = "";
 
 
 
@@ -50,7 +53,6 @@ public class Vote extends JFrame implements ActionListener{
 
 
         add(panel);
-        setVisible(true);
     }
 
     public static void main(String[] args) {
@@ -63,6 +65,8 @@ public class Vote extends JFrame implements ActionListener{
         er.setText("");
         /*3. Request for the party in Senate, House and Governorship elections*/
         if (e.getSource()==button && !selected.equals("---")) {
+            action = -1;
+            prev = selected;
             if (cycle==0) {
                 choices = new String[] { "---", "(0) Republican: Jive Jay", "(1) Democratic: Alethea Velazquez", "(2) Conservative: Blue Bird", "(3) Green: Bushra Ray", "(4) Independent: Alexander the Great" };
                 cb.removeAllItems();
@@ -91,10 +95,12 @@ public class Vote extends JFrame implements ActionListener{
                 label.setText("<html> Select a Governship Candidate you'd like to vote for and press Confirm to vote for them </html>");
             }
             else {
+                cycle++;
                 label.setText("<html>Excellent, your vote and information has been successfully recorded. Thank you for contributing!<br><br><br> If you'd like to see the results, please press the 'See Results' button</html>");
                 panel.remove(cb);
                 panel.remove(button);
                 panel.add(results);
+                results.addActionListener(this);
                 panel.revalidate();
                 panel.repaint();
             }
@@ -103,19 +109,8 @@ public class Vote extends JFrame implements ActionListener{
             selected = (String)cb.getSelectedItem();
         }
         else if (e.getSource()==results) {
-
-
-            /*
-             * 
-             * 
-             * RUN Result JFrame here
-             * 
-             * 
-             * 
-             */
-
-
-
+            setVisible(false);
+            action = 1;
         }
         else {
             er.setText("Invalid choice, please try again");
