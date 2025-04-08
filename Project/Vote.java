@@ -21,7 +21,6 @@ public class Vote extends JFrame implements ActionListener{
     String selected = "---";
     JLabel er = new JLabel();
     JButton results = new JButton("See Results");
-    Result r = new Result("Result Page");
 
 
 

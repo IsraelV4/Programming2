@@ -29,7 +29,6 @@ public class Political extends JFrame implements ActionListener {
     JButton button = new JButton("Send");
     String[] data = new String[] {"First name", "Middle name (Optional)", "Last name", "SSN", "phone number", "address line 1", "address line 2 (Optional)", "street address"," zip code", "city", "state"};
     JLabel error = new JLabel("Hello");
-    Vote v = new Vote("Voting Page");
 
     public Political(String name) {
         super(name);
