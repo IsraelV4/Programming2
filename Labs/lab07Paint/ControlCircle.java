@@ -22,10 +22,15 @@ public class ControlCircle extends JFrame implements ActionListener {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             for (int x=0; x<size; x++) {
-                g.drawLine(x+width/2+ax, (int)Math.sqrt(size*size-x*x)+height/2+ay, x+1+width/2+ax, (int)Math.sqrt(size*size-(x+1)*(x+1))+height/2+ay);
-                g.drawLine(x+width/2+ax, -1*(int)Math.sqrt(size*size-x*x)+height/2+ay, x+1+width/2+ax, -1*(int)Math.sqrt(size*size-(x+1)*(x+1))+height/2+ay);
-                g.drawLine(-x+width/2+ax, (int)Math.sqrt(size*size-x*x)+height/2+ay, -x+1+width/2+ax, (int)Math.sqrt(size*size-(x+1)*(x+1))+height/2+ay);
-                g.drawLine(-x+width/2+ax, -1*(int)Math.sqrt(size*size-x*x)+height/2+ay, -x+1+width/2+ax, -1*(int)Math.sqrt(size*size-(x+1)*(x+1))+height/2+ay);
+                int x1 = x+width/2+ax;
+                int help = (int)Math.sqrt(size*size-x*x);
+                int y1 = height/2+ay;
+                int help2 = (int)Math.sqrt(size*size-(x+1)*(x+1));
+
+                g.drawLine(x1, y1 +help, x1+1, help2+y1);
+                g.drawLine(x1, y1-help, x1+1, y1-help2);
+                g.drawLine(x1 -2*x, help+y1, x1-2*x+1, help2+y1);
+                g.drawLine(x1 -2*x, y1-help, x1-2*x+1, y1-help2);
             }
         }
     };
