@@ -38,7 +38,6 @@ public class MeasureUnitConvertor extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if (e.getSource() instanceof JButton) {
             if (e.getSource()==button) {
                 double d;

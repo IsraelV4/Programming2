@@ -3,6 +3,7 @@ package Labs.examples;
 import java.io.*;
 
 public class test {
+    
     public static void main(String[] args) {
         String data = "This is a line of text inside the file";
 
@@ -13,6 +14,7 @@ public class test {
             byte[] arr = data.getBytes();
 
             b.write(arr);
+            a.close();
             b.close();
         }
         catch (Exception e) {

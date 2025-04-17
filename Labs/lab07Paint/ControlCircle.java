@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-@SuppressWarnings("unused")
 public class ControlCircle extends JFrame implements ActionListener {
 
     int size = 100;
