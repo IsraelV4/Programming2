@@ -53,7 +53,10 @@ public class Add {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        if (args[0].equals("add")) {
+        String[] choices = new String[] {"add", "Factorial", "HCF", "Fib"};
+        System.out.print("What would you like to do?\n" + Arrays.toString(choices) + ": ");
+        String hold = input.next();
+        if (hold.equals(choices[0])) {
             System.out.print("Starting Number: ");
             int n1 = input.nextInt();
             System.out.print("End number: ");
@@ -64,14 +67,14 @@ public class Add {
             System.out.print(total);
             input.close();
         }
-        else if (args[0].equals("Factorial")) {
+        else if (hold.equals(choices[1])) {
             System.out.print("Enter a factorial number: ");
             int n = input.nextInt();
             int total = Fact(n);
             System.out.print(" = " + total);
             input.close();
         }
-        else if (args[0].equals("HCF")) {
+        else if (hold.equals(choices[2])) {
             System.out.print("Enter the first number: ");
             int n1 = input.nextInt();
             System.out.print("Enter the second number: ");
@@ -80,12 +83,16 @@ public class Add {
             Arrays.sort(arr);
             HCF(arr[0], arr[0], arr[1]);
         }
-        else if (args[0].equals("Fib")) {
+        else if (hold.equals(choices[3])) {
             System.out.print("Enter Fib number: ");
             int n = input.nextInt();
             for (int i=0; i<n; i++) {
                 System.out.println("Fib number " + i + ": " + F(i));
             }
+        }
+        else {
+            System.out.println("Invalid input. Please try again);
+            main(args);
         }
     }
 
