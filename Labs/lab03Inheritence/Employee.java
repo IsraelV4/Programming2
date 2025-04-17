@@ -46,7 +46,7 @@ public class Employee {
 
         Employee[] arr = new Employee[] {a,b,c,d};
         for (int i=0; i<arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.println(arr[i]+"\n");
         }
     }
 }

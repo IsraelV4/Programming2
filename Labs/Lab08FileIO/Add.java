@@ -1,4 +1,4 @@
-package Labs.Lab08FileIO;
+package Labs.lab08FileIO;
 
 import java.util.*;
 import java.util.Arrays;
@@ -91,7 +91,7 @@ public class Add {
             }
         }
         else {
-            System.out.println("Invalid input. Please try again);
+            System.out.println("Invalid input. Please try again");
             main(args);
         }
     }
