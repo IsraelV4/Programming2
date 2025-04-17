@@ -8,7 +8,7 @@ public class test {
 
         try {
             FileOutputStream a = new FileOutputStream("output.txt");
-            BufferedOutputStream b = new BufferedOutputStream(a);
+            BufferedOutputStream b = new BufferedOutputStream(System.out);
 
             byte[] arr = data.getBytes();
 
