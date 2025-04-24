@@ -1,4 +1,4 @@
-package Labs.examples;
+package Labs.lab07Paint;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package Labs.examples;
+package Labs.lab07Paint;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -43,15 +43,21 @@ public class MeasureUnitConvertor extends JFrame implements ActionListener{
                 double d;
                 String tmp1 = a.getText();
                 String tmp2 = b.getText();
-                if (tmp1.equals("")) {
-                    d = Double.parseDouble(tmp2);
-                    d/=2.205;
-                    a.setText(""+d);
+                try {
+                    if (tmp1.equals("")) {
+                        d = Double.parseDouble(tmp2);
+                        d*=2.205;
+                        a.setText(""+d);
+                    }
+                    else {
+                        d = Double.parseDouble(tmp1);
+                        d/=2.205;
+                        b.setText(""+d);
+                    }
                 }
-                else {
-                    d = Double.parseDouble(tmp1);
-                    d*=2.205;
-                    b.setText(""+d);
+                catch (Exception ex) {
+                    a.setText("Cannot be a non-number");
+                    b.setText("Cannot be a non-number");
                 }
             }
             else {
