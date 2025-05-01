@@ -19,7 +19,6 @@ public class Driver {
                     f1.action = 0;
                 }
                 else if (f2.action==-1) {
-                    System.out.println("Recieved Vote: " + (f2.cycle-1) + ": " + f2.prev);
                     f3.recieveVote(f2.cycle-1, f2.prev);
                     f2.action = 0;
                 }
