@@ -55,11 +55,20 @@ public class Result extends JFrame implements ActionListener {
 
     public static boolean canVote(String[] arr, ArrayList<String[]> voters) {
         for (int i=0; i<voters.size(); i++) {
-            if (Arrays.equals(voters.get(i),arr)) {
-                return false;
+            int[] ch = new int[] {2, 3, 8, 9, 10};
+            boolean r = true;
+            for (int j: ch) {
+                r &= check(arr[j], voters, i, j);
+                if (!r) {
+                    return false;
+                }
             }
         }
         return true;
+    }
+
+    public static boolean check(String str, ArrayList<String[]> voters, int i, int j) {
+        return str.equals(voters.get(i)[j]);
     }
 
     public void recieveVote(int i, String vote) {

@@ -26,19 +26,21 @@ public class Political extends JFrame implements ActionListener {
      */
 
     //
-    JTextField[] info = new JTextField[11];
+    
 
-    JButton button = new JButton("Send");
-    String[] data = new String[] {"First name", "Middle name (Optional)", "Last name", "SSN", "phone number", "address line 1", "address line 2 (Optional)", "street address"," zip code", "city", "state"};
-    JLabel error = new JLabel("");
-    int action = 0;
-    String[] tmp;
+    JButton button = new JButton("Send"); // Button to send the user's information to the 2nd page
+    String[] data = new String[] {"First name", "Middle name (Optional)", "Last name", "Male or Female?", "SSN", "phone number", "address line 1","address line 2 (optional)", "Date of Birth (Day)","Date of Birth (Month)", "Date of Birth (Year)", "street address"," zip code", "city", "state"};
+    // Text next to the info boxes
+    JTextField[] info = new JTextField[data.length]; // Text boxes where the user can input information
+    JLabel error = new JLabel(""); // Only in use if the user inputs invalid information
+    int action = 0; // Tells the main what this page is doing
+    String[] tmp; // Temporarily Storing information to use
     ArrayList<String[]> voters = new ArrayList<>();
 
-    public Political(String name) {
+    public Political(String name) { // Constructor
         super(name);
         setLocation(0,0);
-        setSize(500,500);
+        setSize(1000,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
 
@@ -56,7 +58,7 @@ public class Political extends JFrame implements ActionListener {
         add(error);
     }
 
-    public Political(String name, ArrayList<String[]> v) {
+    public Political(String name, ArrayList<String[]> v) { // Not in use constructor, old code
         super(name);
         voters = v;
         setLocation(0,0);
@@ -79,24 +81,44 @@ public class Political extends JFrame implements ActionListener {
     }
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) { //  for debugging
         Political frame = new Political("Political Project");
         frame.setVisible(true);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { // Runs if the user sends information
         if (e.getSource()==button) {
             tmp = new String[info.length];
             for (int i=0; i<tmp.length; i++) {
                 tmp[i] = info[i].getText();
-                if (i!=1 && i!=6 && tmp[i].equals("")) {
+                if (i!=1 && i!=7 && tmp[i].equals("")) {
                     error.setText("<html>"+"Invalid information, please fix your [" + data[i] + "]" + "</html>");
                     return;
                 }
+                else if (i==3 && !tmp[i].equals("Male") && !tmp[i].equals("Female")) {
+                    error.setText("<html>"+"Invalid information, please fix your [" + data[i] + "]" +" Must be 'Male' or 'Female'" + "</html>");
+                    return;
+                }
+                else if (i==10) {
+                    try {
+                        int d = Integer.parseInt(tmp[8]);
+                        int m = Integer.parseInt(tmp[9]);
+                        int y = Integer.parseInt(tmp[10]);
+                        if (!(2025-y>=18 || (y==17 && (m<5 || (m==5 && d<=8))))) {
+                            error.setText("<html>"+"Invalid information, please fix your [ Date of Birth ] Must be 18 or older" + "</html>");
+                            return;
+                        }
+                    }
+                    catch (Exception a ) {
+                        error.setText("<html>"+"Invalid information, please fix your [ Date of Birth ] Must be 18 or older" + "</html>");
+                        return;
+                    }
+                   
+                }
             }
             if (!Result.canVote(tmp, voters)) {
-                error.setText("<html>Invalid information, already voted");
+                error.setText("<html>Not allowed to vote</html>");
                 return;
             }
             error.setText("");

@@ -22,10 +22,16 @@ public class Creator {
         }
         else if (tmp.equals(actions[1])) {
             System.out.print("Write to the file: ");
-            tmp = input.nextLine() + "\n";
+            tmp = input.nextLine();
 
-            a.seek(size);
-            a.write(tmp.getBytes());
+            byte[] bytes = new byte[size];
+            a.seek(0);
+            a.read(bytes);
+            String hold = new String(bytes);
+            int random = (int)(Math.random()*hold.length());
+            hold = hold.substring(0, random) + tmp + hold.substring(random, hold.length());
+            a.seek(0);
+            a.write(hold.getBytes());
             size+=tmp.getBytes().length;
         }
         else if (!tmp.equals(actions[2])) {
