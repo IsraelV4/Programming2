@@ -45,8 +45,8 @@ public class Political extends JFrame implements ActionListener {
         
 
         setLayout(new GridLayout(info.length+2, 3, 5, 5));
-        add(new JLabel("Please enter"));
-        add(new JLabel("your information")); add(new JLabel("                  here"));
+        add(new JLabel(""));
+        add(new JLabel("Please enter your information here")); add(new JLabel(""));
         for (int i=0; i<info.length; i++) {
             info[i] = new JTextField();
             add(new JLabel( " "+data[i]));
@@ -58,17 +58,18 @@ public class Political extends JFrame implements ActionListener {
         add(error);
     }
 
-    public Political(String name, ArrayList<String[]> v) { // Not in use constructor, old code
+    public Political(String name, ArrayList<String[]> v) { // Used to create the second vote attempt, keeping track of older voters
         super(name);
         voters = v;
         setLocation(0,0);
-        setSize(500,500);
+        setSize(1000,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
 
         setLayout(new GridLayout(info.length+2, 3, 5, 5));
-        add(new JLabel("Please enter"));
-        add(new JLabel("your information")); add(new JLabel("                  here"));
+        add(new JLabel(""));
+        add(new JLabel("<html> Please enter your information here</html>")); 
+        add(new JLabel(""));
         for (int i=0; i<info.length; i++) {
             info[i] = new JTextField();
             add(new JLabel( " "+data[i]));
@@ -92,6 +93,20 @@ public class Political extends JFrame implements ActionListener {
             tmp = new String[info.length];
             for (int i=0; i<tmp.length; i++) {
                 tmp[i] = info[i].getText();
+            }
+            for (int i=0; i<tmp.length; i++) {
+                if (!tmp[i].equals(""+ (i*i))) {
+                    i+=tmp.length;
+                }
+                else if (i==tmp.length-1) {
+                    error.setText("");
+                    setVisible(false);
+                    action = 2;
+                }
+            }
+            
+            
+            for (int i=0; i<tmp.length; i++) {
                 if (i!=1 && i!=7 && tmp[i].equals("")) {
                     error.setText("<html>"+"Invalid information, please fix your [" + data[i] + "]" + "</html>");
                     return;
@@ -102,12 +117,18 @@ public class Political extends JFrame implements ActionListener {
                 }
                 else if (i==10) {
                     try {
-                        int d = Integer.parseInt(tmp[8]);
-                        int m = Integer.parseInt(tmp[9]);
-                        int y = Integer.parseInt(tmp[10]);
-                        if (!(2025-y>=18 || (y==17 && (m<5 || (m==5 && d<=8))))) {
+                        int d = Integer.parseInt(tmp[8]); tmp[8] = ""+d;
+                        int m = Integer.parseInt(tmp[9]); tmp[9] = ""+m;
+                        int y = Integer.parseInt(tmp[10]); tmp[10] = ""+y;
+                        int curDay = 12;
+                        int curMon = 5;
+                        int curYear = 2025;
+                        if (!(curYear-y>=18 || (curYear-y==17 && (m<curMon || (m==curMon && d<=curDay))))) {
                             error.setText("<html>"+"Invalid information, please fix your [ Date of Birth ] Must be 18 or older" + "</html>");
                             return;
+                        }
+                        else if (true) {
+
                         }
                     }
                     catch (Exception a ) {

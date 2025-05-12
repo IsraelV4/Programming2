@@ -59,9 +59,10 @@ public class Result extends JFrame implements ActionListener {
             boolean r = true;
             for (int j: ch) {
                 r &= check(arr[j], voters, i, j);
-                if (!r) {
-                    return false;
-                }
+                System.out.println(arr[j] + " : " + voters.get(i)[j]);
+            }
+            if (r) {
+                return false;
             }
         }
         return true;

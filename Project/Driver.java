@@ -26,18 +26,18 @@ public class Driver {
                     f3.recieveVote(f2.cycle-1, f2.prev);
                     f2.action = 0;
                 }
-                else if (f2.action == 1) { // Runs when the user selects see results
+                else if (f2.action == 1 || f3.action==1) { // Runs when the user selects see results
                     // Opens the third page
-                    f3.setVisible(true);
-                    f2.action=0;
-                    f3.updateVote();
-                }
-                else if (f3.action==1) { // Runs when the user finishes viewing the results and allows
-                    // A new voter to vote
                     f3.action = 0;
                     f1 = new Political("Part 1", f3.voters);
                     f2 = new Vote("Part 2");
                     f1.setVisible(true);
+                }
+                else if (f1.action==2) {
+                    // A new voter to vote
+                    f3.setVisible(true);
+                    f2.action=0;
+                    f3.updateVote();
                 }
             }
         }

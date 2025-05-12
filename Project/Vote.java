@@ -24,7 +24,7 @@ public class Vote extends JFrame implements ActionListener{
     JComboBox<String> cb = new JComboBox<String>(choices); // Stores the choices
     String selected = "---"; // What choice the user has selected in the drop-box
     JLabel er = new JLabel(); // Only in use if the user makes an invalid choice "---"
-    JButton results = new JButton("See Results"); // Button at the end to see the results of the election
+    JButton results = new JButton("Submit vote"); // Button at the end to see the results of the election
     int action = 0; // Tells the main what this panel is doing
 
     String prev = ""; // Stores the candidate the user just voted for
@@ -101,7 +101,7 @@ public class Vote extends JFrame implements ActionListener{
             }
             else { // Once all candiates have been voted for, allows user to see the results
                 cycle++;
-                label.setText("<html>Excellent, your vote and information has been successfully recorded. Thank you for contributing!<br><br><br> If you'd like to see the results, please press the 'See Results' button</html>");
+                label.setText("<html>Excellent, your vote and information has been successfully recorded. Thank you for contributing!</html>");
                 panel.remove(cb);
                 panel.remove(button);
                 panel.add(results);
