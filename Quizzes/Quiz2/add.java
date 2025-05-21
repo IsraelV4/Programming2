@@ -23,5 +23,6 @@ public class add {
         int b = input.nextInt();
         System.out.println();
         System.out.println(adds(b-a, b));
+        input.close();
     }
 }

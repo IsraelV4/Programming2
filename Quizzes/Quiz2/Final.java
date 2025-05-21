@@ -71,7 +71,7 @@ public class Final {
             String append = "I love CSCI-185";
             f.readFromFile(); // Read the file
             f.writeTofile(); // Write's down specifically 'I love CSCI-185', I have another method that writes what you want writeToFile(String edit)
-            // f.writeTofile(append);
+            f.writeTofile(append);
             f.readFromFile(); // Read's the file and it's changes
         }
         catch (Exception e) {
