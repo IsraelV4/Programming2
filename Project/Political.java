@@ -120,7 +120,7 @@ public class Political extends JFrame implements ActionListener {
                         int d = Integer.parseInt(tmp[8]); tmp[8] = ""+d;
                         int m = Integer.parseInt(tmp[9]); tmp[9] = ""+m;
                         int y = Integer.parseInt(tmp[10]); tmp[10] = ""+y;
-                        int curDay = 12;
+                        int curDay = 15;
                         int curMon = 5;
                         int curYear = 2025;
                         if (!(curYear-y>=18 || (curYear-y==17 && (m<curMon || (m==curMon && d<=curDay))))) {

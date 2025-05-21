@@ -1,4 +1,5 @@
-package Quizzes;
+package Quizzes.Quiz1;
+
 //File 2
 public class CCNY extends College {
     //Q4

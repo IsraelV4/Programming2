@@ -1,4 +1,5 @@
-package Quizzes;
+package Quizzes.Quiz1;
+
 //File 3
 public class NYIT extends College {
     //Q8

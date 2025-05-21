@@ -1,4 +1,4 @@
-package Quizzes;
+package Quizzes.Quiz1;
 
 public class Father {
     String last_name, home_add, origin;

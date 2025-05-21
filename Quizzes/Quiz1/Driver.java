@@ -1,4 +1,5 @@
-package Quizzes;
+package Quizzes.Quiz1;
+
 //File 4
 public class Driver {
     public static void main(String[] args) {

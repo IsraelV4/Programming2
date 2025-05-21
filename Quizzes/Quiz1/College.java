@@ -1,4 +1,4 @@
-package Quizzes;
+package Quizzes.Quiz1;
 //File 1
 public abstract class College {
     //Q1

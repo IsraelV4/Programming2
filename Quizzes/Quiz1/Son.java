@@ -1,4 +1,5 @@
-package Quizzes;
+package Quizzes.Quiz1;
+
 //File 3
 public class Son extends Father {
     String first_name, place_birth;

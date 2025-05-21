@@ -1,4 +1,4 @@
-package Quizzes;
+package Quizzes.Quiz1;
 
 public class Cylinder {
     double radius = 7.0; 

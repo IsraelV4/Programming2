@@ -1,4 +1,4 @@
-package Quizzes;
+package Quizzes.Quiz1;
 
 public class Dog {
     //Q1
